@@ -20,7 +20,14 @@ class Node
 end
 
 class LinkedList
+  attr_reader :head, :tail
+  include Enumerable
+
   def initialize
+    @head = Node.new
+    @tail = Node.new
+    @head.next = @tail
+    @tail.prev = @head
   end
 
   def [](i)
@@ -28,11 +35,13 @@ class LinkedList
     nil
   end
 
-  def first
-  end
+  # def first
+  #   each { |node| return node if node.prev == nil }
+  # end
 
-  def last
-  end
+  # def last
+  #   each { |node| return node if node.next == nil }
+  # end
 
   def empty?
   end
@@ -53,6 +62,8 @@ class LinkedList
   end
 
   def each
+    return if 
+    head.next.each
   end
 
   # uncomment when you have `each` working and `Enumerable` included
